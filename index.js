@@ -1,4 +1,9 @@
-function getInterfaceValidator(interfacePropArrays) {
+// initialize as no-op functions so no overhead is introduced in production mode
+var getInterfaceValidator = function() { return function() { return undefined; } },
+	validateArgumentInterface = function(func) { return func };
+
+//!steal-remove-start
+getInterfaceValidator = function(interfacePropArrays) {
 	var props = flatten(interfacePropArrays);
 
 	return function(base) {
@@ -8,9 +13,9 @@ function getInterfaceValidator(interfacePropArrays) {
 
 		return missingProps.length ? {message:"missing expected properties", related: missingProps} : undefined;
 	}
-}
+};
 
-function validateArgumentInterface(func, argIndex, interfaces, errorHandler) {
+validateArgumentInterface = function(func, argIndex, interfaces, errorHandler) {
 	return function() {
 		var errors = getInterfaceValidator(interfaces)(arguments[argIndex]);
 		if (errors && errorHandler) {
@@ -19,7 +24,8 @@ function validateArgumentInterface(func, argIndex, interfaces, errorHandler) {
 
 		return func.apply(this, arguments);
 	}
-}
+};
+//!steal-remove-end
 
 function flatten(arrays) {
 	return arrays.reduce(function(ret, val) {
