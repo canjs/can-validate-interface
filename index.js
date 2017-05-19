@@ -1,33 +1,22 @@
-// Currently expects interface as list(s) of property names
-// Could add interface names to lists to give more detailed error messages
-// eg.
-//    can-interface: base object missing expected properties: "add", "remove", "save", "hydrate"
-// vs.
-//    can-interface: base object missing properties expected of interfaces:
-//        Composite, missing: "add", "remove"
-//        Model, missing: "save"
-//        anonymous interface, missing: "hydrate"
-//
-// Named interfaces could also give more information during documentation building phase
+function getInterfaceValidator(interfacePropArrays) {
+	var props = flatten(interfacePropArrays);
 
+	return function(base) {
+			var missingProps = props.reduce(function(missing, prop) {
+				return prop in base ? missing : missing.concat(prop)
+			}, []);
 
-function hasInterface(base, propArrays) {
-	var props = flatten(propArrays),
-		missingProps = props.reduce(function(missing, prop) {
-			return prop in base ? missing : missing.concat(prop)
-		}, []);
-
-	if (missingProps.length > 0) {
-		var missingPropsString = '"' + missingProps.join('", "') + '"';
-		console.warn('can-interface: object missing expected properties: ' + missingPropsString);
+		return missingProps.length ? {message:"missing expected properties", related: missingProps} : undefined;
 	}
-
-	return missingProps.length === 0;
 }
 
-function checkArgumentInterface(func, argIndex, interfaces) {
+function validateArgumentInterface(func, argIndex, interfaces, errorHandler) {
 	return function() {
-		hasInterface(arguments[argIndex], interfaces);
+		var errors = getInterfaceValidator(interfaces)(arguments[argIndex]);
+		if (errors && errorHandler) {
+			errorHandler(errors, arguments[argIndex]);
+		}
+
 		return func.apply(this, arguments);
 	}
 }
@@ -38,4 +27,4 @@ function flatten(arrays) {
 	}, [])
 }
 
-module.exports = {hasInterface, checkArgumentInterface};
+module.exports = {getInterfaceValidator, validateArgumentInterface};
