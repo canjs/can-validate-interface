@@ -4,7 +4,7 @@ Utility to validate property existence.  Test for missing properties before they
 
 - <code>[__can-interface__ Object](#caninterfaceobject)</code>
   - <code>[getInterfaceValidator(propertyArrays)](#getinterfacevalidatorpropertyarrays)</code>
-  - <code>[validateArgumentInterface(func, argIndex, propertyArrays, errorHandler)](#validateargumentinterfacefunc-argindex-propertyarrays-callback)</code>
+  - <code>[validateArgumentInterface(func, argIndex, propertyArrays, errorHandler)](#validateargumentinterfacefunc-argindex-propertyarrays-errorhandler)</code>
 
 ## API
 
