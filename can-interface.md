@@ -2,7 +2,7 @@
 @parent can-infrastructure
 @package ./package.json
 
-@description `can-interface` provides simple property existence validation. Use it to prevent errors resulting from
+@description `can-interface` provides simple property existence validation. Use to prevent errors resulting from
 missing properties on input objects.
 
 
@@ -33,13 +33,14 @@ errors = daoValidator(dao);
 ```
 
 @param {Array.<String, Array.<String>>} propertyArrays Property names and arrays of property names to validate existence of
-@return {function({*}): {{message:String, related:Array.<String>}}} Function that validates an object for properties in propertyArrays and returns an error record or undefined
+
+@return {function({*}): {{message:String, related:Array.<String>}}} Function that validates an object for properties in propertyArrays and returns an error record or undefined if no properties are missing.
 
 
 
 @signature `validateArgumentInterface(func, argIndex, propertyArrays, errorHandler)`
 
-Get a function that wraps the provided function argument, validating an indicated argument for the provided
+Get a function that wraps the provided function, validating an indicated argument for the provided
 properties and calling a callback if properties are missing:
 
 ```js
@@ -65,7 +66,11 @@ serializeDao('json', dao);
 ```
 
 @param {function(...[{*}])} func A function to validate an argument of
+
 @param {Number} argIndex The index of the argument of func that should be validated
+
 @params {Array.<String, Array.<String>>} propertyArrays Property names and arrays of property names to validate existence of
+
 @params {function({{message:String, related:Array.<String>}}, {*})} errorHandler Function that receives the error record and argument that failed validation
+
 @return {function(...[{*}])} Function that calls `func` after validating the existence of properties on the specified argument and calling errorHandler if any properties are missing
