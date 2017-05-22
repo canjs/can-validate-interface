@@ -2,7 +2,7 @@ var mocha = require('mocha');
 var chai = require('chai');
 var sinon = require('sinon');
 var connect = require('can-connect');
-var {makeInterfaceValidator} = require('./index.js');
+var makeInterfaceValidator = require('./index.js');
 
 var describe = mocha.describe;
 var it = mocha.it;

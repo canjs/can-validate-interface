@@ -2,12 +2,11 @@
 
 Utility to validate property existence. Test for missing properties before they cause errors later.
 
-- <code>[__can-validate-interface__ Object](#caninterfaceobject)</code>
-  - <code>[makeInterfaceValidator(propertyArrays)](#makeinterfacevalidatorpropertyarrays)</code>
+- <code>[makeInterfaceValidator(propertyArrays)](#makeinterfacevalidatorpropertyarrays)</code>
 
 ## API
 
-## can-validate-interface `{Object}`
+### can-validate-interface `function`
 
 Validate objects for property existence
 
@@ -16,9 +15,9 @@ Validate objects for property existence
 Get a function that validates a given object for the provided properties:
 
 ```js
-var canInterface = require("can-validate-interface");
+var makeInterfaceValidator = require("can-validate-interface");
 var dataMethods = ["create","read","update","delete"];
-var daoValidator = canInterface.makeInterfaceValidator([dataMethods, "id"]);
+var daoValidator = makeInterfaceValidator([dataMethods, "id"]);
 
 var dao = {
     create: function() {},

@@ -11,9 +11,9 @@ from missing properties on input objects.
 Get a function that validates a given object for the provided properties:
 
 ```js
-var canInterface = require("can-validate-interface");
+var makeInterfaceValidator = require("can-validate-interface");
 var dataMethods = ["create","read","update","delete"];
-var daoValidator = canInterface.makeInterfaceValidator([dataMethods, "id"]);
+var daoValidator = makeInterfaceValidator([dataMethods, "id"]);
 
 var dao = {
     create: function() {},

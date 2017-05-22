@@ -9,7 +9,7 @@ function makeInterfaceValidator(interfacePropArrays) {
 
 		return missingProps.length ? {message:"missing expected properties", related: missingProps} : undefined;
 	}
-};
+}
 
 function flatten(arrays) {
 	return arrays.reduce(function(ret, val) {
@@ -17,4 +17,4 @@ function flatten(arrays) {
 	}, [])
 }
 
-module.exports = {makeInterfaceValidator};
+module.exports = makeInterfaceValidator;
