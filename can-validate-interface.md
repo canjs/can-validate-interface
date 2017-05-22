@@ -1,20 +1,19 @@
-@module {{}} can-interface
+@module {{}} can-validate-interface
 @parent can-infrastructure
 @package ./package.json
 
-@description `can-interface` provides simple property existence validation. Use to prevent errors resulting from
-missing properties on input objects.
+@description `can-validate-interface` provides simple property existence validation. Use to prevent errors resulting
+from missing properties on input objects.
 
 
-
-@signature `getInterfaceValidator(propertyArrays)`
+@signature `makeInterfaceValidator(propertyArrays)`
 
 Get a function that validates a given object for the provided properties:
 
 ```js
-var interface = require("can-interface");
+var interface = require("can-validate-interface");
 var dataMethods = ["create","read","update","delete"];
-var daoValidator = interface.getInterfaceValidator([dataMethods, "id"]);
+var daoValidator = interface.makeInterfaceValidator([dataMethods, "id"]);
 
 var dao = {
     create: function() {},

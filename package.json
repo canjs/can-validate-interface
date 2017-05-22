@@ -1,26 +1,27 @@
 {
-  "name": "can-interface",
+  "name": "can-validate-interface",
   "version": "0.0.1",
-  "description": "Add easy interface expectations when adding mixins to base implementations",
+  "description": "Utility to validate property existence. Test for missing properties before they cause errors later.",
   "main": "index.js",
   "scripts": {
     "test": "mocha"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/canjs/can-interface.git"
+    "url": "git://github.com/canjs/can-validate-interface.git"
   },
   "keywords": [
     "interface",
     "canjs",
-    "can"
+    "can",
+    "can-validate"
   ],
   "author": "Bitovi",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/canjs/can-interface/issues"
+    "url": "https://github.com/canjs/can-validate-interface/issues"
   },
-  "homepage": "https://github.com/canjs/can-interface#readme",
+  "homepage": "https://github.com/canjs/can-validate-interface#readme",
   "devDependencies": {
     "chai": "^3.5.0",
     "mocha": "^3.3.0",
