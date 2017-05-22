@@ -14,17 +14,6 @@ getInterfaceValidator = function(interfacePropArrays) {
 		return missingProps.length ? {message:"missing expected properties", related: missingProps} : undefined;
 	}
 };
-
-validateArgumentInterface = function(func, argIndex, interfaces, errorHandler) {
-	return function() {
-		var errors = getInterfaceValidator(interfaces)(arguments[argIndex]);
-		if (errors && errorHandler) {
-			errorHandler(errors, arguments[argIndex]);
-		}
-
-		return func.apply(this, arguments);
-	}
-};
 //!steal-remove-end
 
 function flatten(arrays) {
@@ -33,4 +22,4 @@ function flatten(arrays) {
 	}, [])
 }
 
-module.exports = {getInterfaceValidator, validateArgumentInterface};
+module.exports = {getInterfaceValidator};
