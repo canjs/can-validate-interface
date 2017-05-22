@@ -16,9 +16,9 @@ Validate objects for property existence
 Get a function that validates a given object for the provided properties:
 
 ```js
-var interface = require("can-validate-interface");
+var canInterface = require("can-validate-interface");
 var dataMethods = ["create","read","update","delete"];
-var daoValidator = interface.makeInterfaceValidator([dataMethods, "id"]);
+var daoValidator = canInterface.makeInterfaceValidator([dataMethods, "id"]);
 
 var dao = {
     create: function() {},
