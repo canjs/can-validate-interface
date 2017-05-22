@@ -1,6 +1,6 @@
 {
   "name": "can-validate-interface",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Utility to validate property existence. Test for missing properties before they cause errors later.",
   "main": "index.js",
   "scripts": {
