@@ -1,9 +1,8 @@
 // initialize as no-op functions so no overhead is introduced in production mode
-var getInterfaceValidator = function() { return function() { return undefined; } },
-	validateArgumentInterface = function(func) { return func };
+var makeInterfaceValidator = function() { return function() { return undefined; } };
 
 //!steal-remove-start
-getInterfaceValidator = function(interfacePropArrays) {
+makeInterfaceValidator = function(interfacePropArrays) {
 	var props = flatten(interfacePropArrays);
 
 	return function(base) {
@@ -22,4 +21,4 @@ function flatten(arrays) {
 	}, [])
 }
 
-module.exports = {getInterfaceValidator};
+module.exports = {makeInterfaceValidator};
