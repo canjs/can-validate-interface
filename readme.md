@@ -1,61 +1,28 @@
 # can-validate-interface
 
+[![Join the chat at https://gitter.im/canjs/canjs](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/canjs/canjs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/canjs/can-validate-interface/blob/master/LICENSE.md)
+[![npm version](https://badge.fury.io/js/can-validate-interface.svg)](https://www.npmjs.com/package/can-validate-interface)
+[![Travis build status](https://travis-ci.org/canjs/can-validate-interface.svg?branch=master)](https://travis-ci.org/canjs/can-validate-interface)
+[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/canjs/can-validate-interface?branch=master&svg=true)](https://ci.appveyor.com/project/matthewp/can-validate-interface)
+[![Coverage status](https://coveralls.io/repos/github/canjs/can-validate-interface/badge.svg?branch=master)](https://coveralls.io/github/canjs/can-validate-interface?branch=master)
+[![Greenkeeper badge](https://badges.greenkeeper.io/canjs/can-validate-interface.svg)](https://greenkeeper.io/)
+
 Utility to validate property existence. Test for missing properties before they cause errors later.
 
-- <code>[makeInterfaceValidator(propertyArrays)](#makeinterfacevalidatorpropertyarrays)</code>
+## Documentation
 
-## API
+Read the [can-validate-interface API docs on CanJS.com](https://canjs.com/doc/can-validate-interface.html).
 
-### can-validate-interface `function`
+## Changelog
 
-Validate objects for property existence
-
-#### <code>__makeInterfaceValidator(propertyArrays)__</code>
-
-Get a function that validates a given object for the provided properties:
-
-```js
-var makeInterfaceValidator = require("can-validate-interface");
-var dataMethods = ["create","read","update","delete"];
-var daoValidator = makeInterfaceValidator([dataMethods, "id"]);
-
-var dao = {
-    create: function() {},
-    read: function() {},
-    update: function() {},
-    delete: function() {}
-};
-
-var errors = daoValidator(dao);
-// errors == {message:"missing expected properties", related: ["id"]}
-
-dao.id = 10;
-
-errors = daoValidator(dao);
-// errors == undefined
-```
-
-1. __propertyArrays__ `{Array<String, Array<String>}`:
-  Property names and arrays of property names to validate existence of.
-
-- __returns__ `{function(object): {{message:String, related:Array<String>}}`:
-  Function that validates an object for properties in `propertyArrays` and returns an error record or undefined if no properties are missing.
+See the [latest releases on GitHub](https://github.com/canjs/can-validate-interface/releases).
 
 ## Contributing
 
-### Making a Build
+The [contribution guide](https://github.com/canjs/can-validate-interface/blob/master/CONTRIBUTING.md) has information on getting help, reporting bugs, developing locally, and more.
 
-To make a build of the distributables into `dist/` in the cloned repository run
-```
-npm install
-node build
-```
+## License
 
-### Running the tests
+[MIT](https://github.com/canjs/can-validate-interface/blob/master/LICENSE.md)
 
-Tests can run in the browser by opening a webserver and visiting the `test.html` page.
-Automated tests that run the tests from the command line in Firefox can be run with
-
-```
-npm test
-```
