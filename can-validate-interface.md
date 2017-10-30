@@ -1,5 +1,6 @@
 @module {{}} can-validate-interface
-@parent can-infrastructure
+@parent can-data-validation
+@collection can-infrastructure
 @package ./package.json
 
 @description `can-validate-interface` provides simple property existence validation. Use to prevent errors resulting
