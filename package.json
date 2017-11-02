@@ -26,7 +26,7 @@
     "release:major": "npm version major && npm publish",
     "build": "node build.js",
     "test": "npm run detect-cycle && mocha",
-    "detect-cycle": "detect-cyclic-packages --ignore done-serve"
+    "detect-cycle": "detect-cyclic-packages --ignore done-serve,can-connect"
   },
   "keywords": [
     "interface",
