@@ -1,6 +1,6 @@
 {
   "name": "can-validate-interface",
-  "version": "1.0.0-pre.2",
+  "version": "1.0.0",
   "description": "Utility to validate property existence. Test for missing properties before they cause errors later.",
   "license": "MIT",
   "homepage": "https://github.com/canjs/can-validate-interface#readme",
