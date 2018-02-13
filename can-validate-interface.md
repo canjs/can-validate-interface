@@ -11,16 +11,16 @@ from missing properties on input objects.
 
 Get a function that validates a given object for the provided properties:
 
-```javascript
+```js
 import makeInterfaceValidator from "can-validate-interface";
 const dataMethods = ["create","read","update","delete"];
 const daoValidator = makeInterfaceValidator([dataMethods, "id"]);
 
 const dao = {
-    create: function() {},
-    read: function() {},
-    update: function() {},
-    delete: function() {}
+	create: function() {},
+	read: function() {},
+	update: function() {},
+	delete: function() {}
 };
 
 let errors = daoValidator(dao);
