@@ -13,8 +13,8 @@ Get a function that validates a given object for the provided properties:
 
 ```js
 import makeInterfaceValidator from "can-validate-interface";
-const dataMethods = ["create","read","update","delete"];
-const daoValidator = makeInterfaceValidator([dataMethods, "id"]);
+const dataMethods = [ "create", "read", "update", "delete" ];
+const daoValidator = makeInterfaceValidator( [ dataMethods, "id" ] );
 
 const dao = {
 	create: function() {},
@@ -23,12 +23,14 @@ const dao = {
 	delete: function() {}
 };
 
-let errors = daoValidator(dao);
+let errors = daoValidator( dao );
+
 // errors == {message:"missing expected properties", related: ["id"]}
 
 dao.id = 10;
 
-errors = daoValidator(dao);
+errors = daoValidator( dao );
+
 // errors == undefined
 ```
 
