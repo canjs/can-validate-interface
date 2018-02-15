@@ -12,23 +12,25 @@ from missing properties on input objects.
 Get a function that validates a given object for the provided properties:
 
 ```js
-var makeInterfaceValidator = require("can-validate-interface");
-var dataMethods = ["create","read","update","delete"];
-var daoValidator = makeInterfaceValidator([dataMethods, "id"]);
+import makeInterfaceValidator from "can-validate-interface";
+const dataMethods = [ "create", "read", "update", "delete" ];
+const daoValidator = makeInterfaceValidator( [ dataMethods, "id" ] );
 
-var dao = {
-    create: function() {},
-    read: function() {},
-    update: function() {},
-    delete: function() {}
+const dao = {
+	create: function() {},
+	read: function() {},
+	update: function() {},
+	delete: function() {}
 };
 
-var errors = daoValidator(dao);
+let errors = daoValidator( dao );
+
 // errors == {message:"missing expected properties", related: ["id"]}
 
 dao.id = 10;
 
-errors = daoValidator(dao);
+errors = daoValidator( dao );
+
 // errors == undefined
 ```
 
