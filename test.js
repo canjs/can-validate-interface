@@ -1,23 +1,30 @@
 'use strict';
 
 var QUnit = require('steal-qunit');
-var connect = require('can-connect');
 var makeInterfaceValidator = require('./index.js');
 
-var BaseInterface = ['id', 'idProp', 'listSet', 'listSetProp'];
 
 QUnit.module('can-validate-interface/makeInterfaceValidator');
 
-QUnit.test('should return can-validate style error when can-connect connection is missing property', function() {
-	var testBehavior = function(baseBehavior) {
-		var validator = makeInterfaceValidator([BaseInterface, 'testProp']),
-			error = validator(baseBehavior);
+QUnit.test('basics', function() {
 
-		equal(error.message, 'missing expected properties', 'missing property validation error raised');
-		deepEqual(error.related, ['testProp'], 'error contains missing property name');
+	var dataMethods = [ "create", "read", "update", "delete" ];
+	var daoValidator = makeInterfaceValidator( [ dataMethods, "id" ] );
 
-		return baseBehavior;
+	var dao = {
+		create: function() {},
+		read: function() {},
+		update: function() {},
+		delete: function() {}
 	};
 
-	connect([testBehavior], {});
+	var errors = daoValidator( dao );
+
+	QUnit.deepEqual(errors, {message:"missing expected properties", related: ["id"]});
+
+	dao.id = 10;
+
+	errors = daoValidator( dao );
+
+	QUnit.equal(errors, undefined);
 });
