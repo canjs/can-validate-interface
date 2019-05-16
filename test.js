@@ -6,7 +6,7 @@ var makeInterfaceValidator = require('./index.js');
 
 QUnit.module('can-validate-interface/makeInterfaceValidator');
 
-QUnit.test('basics', function() {
+QUnit.test('basics', function(assert) {
 
 	var dataMethods = [ "create", "read", "update", "delete" ];
 	var daoValidator = makeInterfaceValidator( [ dataMethods, "id" ] );
