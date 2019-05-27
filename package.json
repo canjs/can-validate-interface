@@ -41,9 +41,9 @@
     "detect-cyclic-packages": "^1.1.0",
     "jshint": "^2.9.5",
     "steal": "^1.5.15",
-    "steal-qunit": "^1.0.1",
+    "steal-qunit": "^2.0.0",
     "steal-tools": "^1.3.5",
-    "testee": "^0.7.0"
+    "testee": "^0.9.0"
   },
   "dependencies": {}
 }

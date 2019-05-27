@@ -6,7 +6,7 @@ var makeInterfaceValidator = require('./index.js');
 
 QUnit.module('can-validate-interface/makeInterfaceValidator');
 
-QUnit.test('basics', function() {
+QUnit.test('basics', function(assert) {
 
 	var dataMethods = [ "create", "read", "update", "delete" ];
 	var daoValidator = makeInterfaceValidator( [ dataMethods, "id" ] );
@@ -20,11 +20,11 @@ QUnit.test('basics', function() {
 
 	var errors = daoValidator( dao );
 
-	QUnit.deepEqual(errors, {message:"missing expected properties", related: ["id"]});
+	assert.deepEqual(errors, {message:"missing expected properties", related: ["id"]});
 
 	dao.id = 10;
 
 	errors = daoValidator( dao );
 
-	QUnit.equal(errors, undefined);
+	assert.equal(errors, undefined);
 });
